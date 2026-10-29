@@ -63,6 +63,17 @@ Optional search limits can be supplied before the moves:
 
 Supported face turns are `F`, `U`, `L`, `R`, `D`, and `B`; append `'` for an inverse turn or `2` for a half turn.
 
+## Benchmarks
+
+These results are from randomized runs using the included depth-8 corner database. The scramble length is the number of turns used to generate the input, not necessarily the shortest solution length. Runtimes depend on hardware, and each search had explicit limits.
+
+| Generated scramble length | Trials solved | Average runtime | Per-scramble limits |
+| --- | ---: | ---: | --- |
+| 10 turns | 20/20 | 0.845 s | 5M nodes, 30 s, 1M open states |
+| 11 turns | 10/10 | 5.070 s | 7.5M nodes, 60 s, 1.25M open states |
+| 12 turns | 16/20 | 20.535 s on solved trials; 28.354 s across all trials | 10M nodes, 90 s, 2M open states |
+
+The 10-turn result combines two batches of 10 scrambles. The 11-turn result is one batch of 10. The 12-turn result combines two batches of 10; some runs stopped at the configured time or open-state limits.
 ## Project layout
 
 - `include/` — cube model interfaces and representation headers.
@@ -71,3 +82,4 @@ Supported face turns are `F`, `U`, `L`, `R`, `D`, and `B`; append `'` for an inv
 - `PatternDatabases/` — database storage, indexing, and generation.
 - `Databases/` — included corner database files.
 - `tests/` — project checks.
+
